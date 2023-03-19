@@ -6,6 +6,7 @@ import MarkdownIt from 'markdown-it';
 import { Picture } from '@astrojs/image/components';
 import Layout from '../../layouts/Layout.astro';
 import Heading from '../../components/Heading.astro';
+import ButtonLink from '../../components/ButtonLink.astro';
 
 export async function getStaticPaths() {
     const files = fs.readdirSync('./src/content/projects');
@@ -45,9 +46,9 @@ const project = getProject();
         <Heading title={project.data.title} />
         <div class="flex flex-wrap gap-8 pt-8">
             <div class="w-column-1">
-                <div class="generated" set:html={project.content} />
+                <div class="generated mb-8" set:html={project.content} />
                 {typeof project.data.link !== 'undefined' && (
-                    <a href={project.data.link} target="_blank" class="mt-8 px-8 py-4 inline-flex items-center justify-center bg-neutral-800 text-white hover:bg-red-700 transition-colors uppercase tracking-wide text-sm">Visit the website</a>
+                    <ButtonLink href={project.data.link} label="Visit the website" />
                 )}
             </div>
 

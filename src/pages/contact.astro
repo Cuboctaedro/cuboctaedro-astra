@@ -1,7 +1,69 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Heading from '../components/Heading.astro';
 ---
 
-<Layout title="Welcome to Astro." description="">
+<Layout
+    title="Contact - Dimitris Kottas"
+    description="Contact data - Dimitris Kottas"
+>
+    <main>
+        <section class="w-container-1 sm:w-container-2 lg:w-container-3 xl:w-container-4 mx-auto px-4">
+            <Heading title="Contact" />
+            <div class="flex flex-wrap gap-8 pt-8">
+                <section class="w-column-1">
+                    <h2 class="font-bold text-lg pb-6">Email</h2>
+                    <p class="pb-2">
+                        <a href="mailto:dkottas1973@gmail.com" class="text-neutral-800 hover:text-red-700 transition-colors">
+                            dkottas1973@gmail.com
+                        </a>
+                    </p>
+                    <p class="pb-2">
+                        <a href="mailto:info@cuboctaedro.eu" class="text-neutral-800 hover:text-red-700 transition-colors">
+                            info@cuboctaedro.eu
+                        </a>
+                    </p>
+                </section>
+                <section class="w-column-1">
+                    <h2 class="font-bold text-lg pb-6">Phone</h2>
+                    <p class="pb-2">
+                        <a href="tel:+306932001313" class="text-neutral-800 hover:text-red-700 transition-colors">
+                            +30 693 2001313
+                        </a>
+                    </p>
+                </section>
+                <section class="w-column-1">
+                    <h2 class="font-bold text-lg pb-6">Post</h2>
+                    <p class="pb-2">
+                        Lomvardou 23 - 25
+                    </p>
+                    <p class="pb-2">
+                        Athens - 11473
+                    </p>
+                    <p class="pb-2">
+                        Greece
+                    </p>
+                </section>
+                <section class="w-column-1">
+                    <h2 class="font-bold text-lg pb-6">Social Media</h2>
+                    <ul>
+                        <li class="pb-2">
+                            <a class="text-neutral-800 hover:text-red-700 transition-colors" href="https://github.com/Cuboctaedro" target="_blank">GitHub</a>
+                        </li>
+                        <li class="pb-2">
+                            <a class="text-neutral-800 hover:text-red-700 transition-colors" href="https://www.linkedin.com/in/dikottas" target="_blank">LinkedIn</a>
+                        </li>
+                        <li class="pb-2">
+                            <a class="text-neutral-800 hover:text-red-700 transition-colors" href="https://www.behance.net/cuboctaedro" target="_blank">Behance</a>
+                        </li>
+                        <li>
+                            <a class="text-neutral-800 hover:text-red-700 transition-colors" href="https://www.facebook.com/profile.php?id=100027702385754" target="_blank">Facebook</a>
+                        </li>
+                    </ul>
+                </section>
+            </div>
+        </section>
+    </main>
+
 </Layout>
 

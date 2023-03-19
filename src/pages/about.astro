@@ -1,7 +1,44 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Heading from '../components/Heading.astro';
+import ButtonLink from '../components/ButtonLink.astro';
 ---
 
-<Layout title="Welcome to Astro." description="">
+<Layout
+    title="About me - Dimitris Kottas"
+    description="Bio and Social Links - Dimitris Kottas"
+>
+    <main>
+        <section class="w-container-1 sm:w-container-2 lg:w-container-3 xl:w-container-4 mx-auto px-4">
+            <Heading title="About" />
+            <div class="flex flex-wrap gap-8 pt-8">
+                <div class="w-column-1">
+                    <ul>
+                        <li class="pb-3">
+                            <a class="text-neutral-800 hover:text-red-700 transition-colors" href="https://github.com/Cuboctaedro" target="_blank">GitHub</a>
+                        </li>
+                        <li class="pb-3">
+                            <a class="text-neutral-800 hover:text-red-700 transition-colors" href="https://www.linkedin.com/in/dikottas" target="_blank">LinkedIn</a>
+                        </li>
+                        <li class="pb-3">
+                            <a class="text-neutral-800 hover:text-red-700 transition-colors" href="https://www.behance.net/cuboctaedro" target="_blank">Behance</a>
+                        </li>
+                        <li>
+                            <a class="text-neutral-800 hover:text-red-700 transition-colors" href="https://www.facebook.com/profile.php?id=100027702385754" target="_blank">Facebook</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="w-column-1 lg:w-column-2 xl:w-column-3">
+                    <div class="generated w-column-1 lg:w-column-2 text-lg text-neutral-600 mb-8">
+                        <p>I have studied architecture and worked as a graphic designer both freelance and for the publishing industry before turning to web development.</p>
+                        <p>I am a self-taught developer with 12 years experience in the design and development of websites and web apps. I have experience in managing complex projects, working either solo or inside a team.</p>
+                        <p>I consider myself a Jack of all Trades, always interested in learning new technologies and expanding my skills.</p>
+                    </div>
+                    <ButtonLink href="/cv.pdf" label="Download CV" />
+                </div>
+            </div>
+        </section>
+    </main>
+
 </Layout>
 
