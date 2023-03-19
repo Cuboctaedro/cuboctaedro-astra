@@ -47,10 +47,15 @@ const post = getPost();
         <Heading title={post.data.title} />
         <div class="flex flex-wrap gap-8 pt-8">
             <div class="w-column-1">
-                <div class="">{new Date(post.data.date).toDateString()}</div>
+                <div class="">{new Date(post.data.date).toLocaleDateString('en-US', {
+                    weekday: 'long',
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                })}</div>
             </div>
 
-            <div class="w-column-1 lg:w-column-2 xl:w-column-3">
+            <div class="w-column-1 lg:w-column-2">
                 <div class="generated" set:html={post.content} />
             </div>
         </div>

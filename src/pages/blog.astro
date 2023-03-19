@@ -40,7 +40,7 @@ const posts = getPosts() as Array<Post>;
     <main>
         <section class="w-container-1 sm:w-container-2 lg:w-container-3 xl:w-container-4 mx-auto px-4">
             <Heading title="Blog" />
-            <div class="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 pt-8">
+            <div class="pt-8">
                 {posts.map((post) => (
                     <PostSummary post={post} />
                 ))}

@@ -7,7 +7,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Hanken Grotesk', ...fontFamily.sans],
+        sans: ['"Source Sans 3"', ...fontFamily.sans],
+        serif: ['"Source Serif 4"', ...fontFamily.serif],
       },
       spacing: {
         'container-1': '20rem', // 320px

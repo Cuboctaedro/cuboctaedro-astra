@@ -13,3 +13,12 @@
 .generated a:hover {
     @apply text-red-600;
 }
+
+.generated h2 {
+    @apply font-bold text-xl pb-2;
+}
+
+::-moz-selection,
+::selection {
+    @apply bg-red-100;
+}

@@ -7,12 +7,19 @@ export interface Props {
 
 const { post } = Astro.props;
 ---
-<article>
-    <p>{new Date(post.data.date).toDateString()}</p>
-    <h2 class="font-bold pt-2">
-        <a href={`/blog/${post.slug}`}>
-            {post.data.title}
-        </a>
-    </h2>
-    <p class="">{post.data.description}</p>
+<article class="flex flex-wrap gap-8 w-full pb-8">
+    <p class="w-column-1 sm:w-column-2 lg:w-column-1 font-sans">{new Date(post.data.date).toLocaleDateString('en-US', {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+    })}</p>
+    <div class="w-column-1 sm:w-column-2 xl:w-column-3">
+        <h2 class="font-bold text-xl pb-2">
+            <a href={`/blog/${post.slug}`}>
+                {post.data.title}
+            </a>
+        </h2>
+        <p class="">{post.data.description}</p>
+    </div>
 </article>
