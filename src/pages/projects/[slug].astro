@@ -1,0 +1,71 @@
+---
+import fs from 'fs';
+import matter from 'gray-matter';
+import type { Project } from '../../types/project';
+import MarkdownIt from 'markdown-it';
+import { Picture } from '@astrojs/image/components';
+import Layout from '../../layouts/Layout.astro';
+import Heading from '../../components/Heading.astro';
+
+export async function getStaticPaths() {
+    const files = fs.readdirSync('./src/content/projects');
+
+    const slugs = files.map((file) => {
+        return file.replace('.md', '');
+    });
+
+    return slugs.map((slug) => ({
+        params: { slug },
+    }));
+};
+
+const { slug } = Astro.params;
+
+function getProject() {
+    const md = new MarkdownIt();
+    const filecontent = fs.readFileSync(`./src/content/projects/${slug}.md`, 'utf-8');
+    const parsedContent = matter(filecontent);
+    const { data, content } = parsedContent;
+    return {
+        slug,
+        data,
+        content: md.render(content),
+    } as Project;
+}
+
+const project = getProject();
+
+---
+
+<Layout
+    title={`${project.data.title} - Dimitris Kottas`}
+    description={`${project.data.description} - Project by Dimitris Kottas`}
+>
+    <article class="w-container-1 sm:w-container-2 lg:w-container-3 xl:w-container-4 mx-auto px-4 ">
+        <Heading title={project.data.title} />
+        <div class="flex flex-wrap gap-8 pt-8">
+            <div class="w-column-1">
+                <div class="generated" set:html={project.content} />
+                {typeof project.data.link !== 'undefined' && (
+                    <a href={project.data.link} target="_blank" class="mt-8 px-8 py-4 inline-flex items-center justify-center bg-neutral-800 text-white hover:bg-red-700 transition-colors uppercase tracking-wide text-sm">Visit the website</a>
+                )}
+            </div>
+
+            <div class="w-column-1 lg:w-column-2 xl:w-column-3">
+                {project.data.gallery.map((picture) => (
+                    <div class="w-column-1 lg:w-column-2 xl:w-column-3 h-column-1 lg:h-column-2 xl:h-column-3 mb-8">
+                        <Picture
+                            src={`/images/${picture.filename}`}
+                            alt={picture.caption}
+                            widths={[288, 608, 928]}
+                            sizes="(max-width: 1023px),(max-width: 1279px), (min-width: 1280px)"
+                            formats={['webp', 'jpg']}
+                            aspectRatio={1}
+                        />
+                    </div>
+                ))}
+            </div>
+        </div>
+    </article>
+
+</Layout>

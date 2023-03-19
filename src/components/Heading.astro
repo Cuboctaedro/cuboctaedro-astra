@@ -1,0 +1,16 @@
+---
+export interface Props {
+    title: string
+    level?: 1 | 2
+}
+
+const { title, level } = Astro.props;
+---
+{level === 2 && (
+    <h2 class="text-4xl font-extralight pb-4 pt-2 border-t border-solid border-red-700">{title}</h2>
+)}
+
+
+{level !== 2 && (
+    <h1 class="text-4xl font-extralight pb-4 pt-2 border-t border-solid border-red-700">{title}</h1>
+)}

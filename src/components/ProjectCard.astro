@@ -1,0 +1,25 @@
+---
+import { Image } from '@astrojs/image/components';
+import type { Project } from '../types/project';
+
+export interface Props {
+    project: Project
+}
+
+const { project } = Astro.props;
+---
+<article class="pt-4">
+    <a href={`/projects/${project.slug}`}>
+        <div class="relative w-72 h-72">
+            <Image
+                src={`/images/${project.data.featuredimage}`}
+                alt={project.data.title}
+                format="webp"
+                width={288}
+                height={288}
+            />
+        </div>
+        <h2 class="font-bold pt-2">{project.data.title}</h2>
+        <p class="">{project.data.description}</p>
+    </a>
+</article>

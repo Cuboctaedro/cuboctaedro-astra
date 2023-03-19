@@ -1,0 +1,50 @@
+---
+import fs from 'fs';
+import matter from 'gray-matter';
+import Heading from '../components/Heading.astro';
+import PostSummary from '../components/PostSummary.astro';
+import Layout from '../layouts/Layout.astro';
+import type { Post } from '../types/post';
+
+function getPosts() {
+    const files = fs.readdirSync('./src/content/blog');
+
+    const posts = files.map((file) => {
+        const slug = file.replace('.md', '');
+        const filecontent = fs.readFileSync(`./src/content/blog/${file}`, 'utf-8');
+        const parsedContent = matter(filecontent);
+        const { data, content } = parsedContent;
+        return {
+            slug,
+            data: {
+                title: data.title,
+                date: data.date.getTime(),
+                description: data.description,
+            },
+            content,
+        };
+    });
+
+    posts.sort((a, b) => (a.data.date - b.data.date));
+
+    return posts;
+}
+
+const posts = getPosts() as Array<Post>;
+---
+
+<Layout
+    title="Blog - Dimitris Kottas"
+    description="Blog by Dimitris Kottas"
+>
+    <main>
+        <section class="w-container-1 sm:w-container-2 lg:w-container-3 xl:w-container-4 mx-auto px-4">
+            <Heading title="Blog" />
+            <div class="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 pt-8">
+                {posts.map((post) => (
+                    <PostSummary post={post} />
+                ))}
+            </div>
+        </section>
+    </main>
+</Layout>
