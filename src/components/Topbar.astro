@@ -5,7 +5,7 @@ const pathname = new URL(Astro.request.url).pathname;
 <nav class="w-container-1 sm:w-container-2 lg:w-container-3 xl:w-container-4 mx-auto flex pt-2 flex-wrap">
     <div class="w-container-1 flex-none px-4">
         {pathname === '/' && (
-            <h1 class="font-bold sm:text-lg">Dimitris Kottas</h1>
+            <h1 class=" sm:text-lg">Dimitris Kottas</h1>
         )}
         {pathname !== '/' && (
             <a href="/" class="font-bold sm:text-lg text-neutral-800 hover:text-neutral-500 transition-colors">Dimitris Kottas</a>

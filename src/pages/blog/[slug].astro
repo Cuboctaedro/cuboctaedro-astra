@@ -46,7 +46,7 @@ const post = getPost();
     <article class="w-container-1 sm:w-container-2 lg:w-container-3 xl:w-container-4 mx-auto px-4 ">
         <Heading title={post.data.title} />
         <div class="flex flex-wrap gap-8 pt-8">
-            <div class="w-column-1">
+            <div class="w-column-1 italic">
                 <div class="">{new Date(post.data.date).toLocaleDateString('en-US', {
                     weekday: 'long',
                     year: 'numeric',

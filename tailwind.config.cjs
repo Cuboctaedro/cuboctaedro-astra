@@ -8,7 +8,7 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ['"Source Sans 3"', ...fontFamily.sans],
-        serif: ['"Source Serif 4"', ...fontFamily.serif],
+        serif: ['"Literata"', ...fontFamily.serif],
       },
       spacing: {
         'container-1': '20rem', // 320px

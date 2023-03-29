@@ -1,7 +1,76 @@
 ---
+import fs from 'fs';
+import matter from 'gray-matter';
+import Heading from '../components/Heading.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import Arrow from '../components/Arrow.astro';
 import Layout from '../layouts/Layout.astro';
+import type { Project } from '../types/project';
+
+function getProjects() {
+    const files = fs.readdirSync('./src/content/projects');
+
+    const projects = files.map((file) => {
+        const slug = file.replace('.md', '');
+        const filecontent = fs.readFileSync(`./src/content/projects/${file}`, 'utf-8');
+        const parsedContent = matter(filecontent);
+        const { data, content } = parsedContent;
+        return {
+            slug,
+            data,
+            content,
+        };
+    });
+
+    projects.sort((a, b) => (a.data.order - b.data.order));
+
+    return projects;
+}
+
+const projects = getProjects() as Array<Project>;
 ---
 
-<Layout title="Welcome to Astro." description="">
+<Layout
+    title="Dimitris Kottas"
+    description="Personal website of developer/designer Dimitris Kottas"
+>
+<main>
+    <section class="w-container-1 sm:w-container-2 lg:w-container-3 xl:w-container-4 mx-auto px-4">
+        <div class="py-6">
+            <div class="w-full lg:w-column-2 pb-12">
+                <div class="text-xl sm:text-3xl font-black  leading-normal">
+                    Perfection is achieved, not when there is nothing more to add, but when there is nothing left to take away. 
+                </div>
+                <div class="text-sm sm:text-base italic pt-3">Antoine de Saint-Exupéry</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="w-container-1 sm:w-container-2 lg:w-container-3 xl:w-container-4 mx-auto px-4">
+        <div class="grid gap-8 grid-cols-1 lg:grid-cols-2 pt-8 border-t border-solid border-red-700">
+
+            <div class="generated text-xl font-light text-neutral-600 leading-loose ">
+                <p>Welcome.<br>My name is Dimitris Kottas. I am a Jack of all Trades who studied architecture, worked as a designer and book editor and became self-taught developer.</p>
+            </div>
+
+            <div>
+                <div class="lg:text-right">
+                    <a href="/projects" class="font-light text-xl text-neutral-600 hover:text-red-700 inline-flex items-center justify-center py-2 gap-2 hover:gap-4 transition-all">
+                        <span class="pb-1">View my work</span>
+                        <Arrow />
+                    </a>
+                </div>
+                <div class="lg:text-right">
+                    <a href="/blog" class="font-light text-xl text-neutral-600 hover:text-red-700 inline-flex items-center justify-center py-2 gap-2 hover:gap-4 transition-all">
+                        <span class="pb-1">Read my blog</span>
+                        <Arrow />
+                    </a>
+                </div>
+    
+            </div>
+
+        </div>
+    </section>
+</main>
 </Layout>
 

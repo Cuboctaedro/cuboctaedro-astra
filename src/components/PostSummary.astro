@@ -8,7 +8,7 @@ export interface Props {
 const { post } = Astro.props;
 ---
 <article class="flex flex-wrap gap-8 w-full pb-8">
-    <p class="w-column-1 sm:w-column-2 lg:w-column-1 font-sans">{new Date(post.data.date).toLocaleDateString('en-US', {
+    <p class="w-column-1 sm:w-column-2 lg:w-column-1 italic">{new Date(post.data.date).toLocaleDateString('en-US', {
         weekday: 'long',
         year: 'numeric',
         month: 'long',
